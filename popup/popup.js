@@ -4,13 +4,13 @@ const messageElement = document.getElementById("message");
 // functions
 // if URL could not be read
 function errorURL() {
-    messageElement.textContent = "Unable to get current tab URL";
+    messageElement.textContent = "Unable to get current tab URL, please try again";
     messageElement.className = "error";
 }
 
 // if URL cannot be used by extension
 function incorrectURL() {
-    messageElement.textContent = "You're not on Instagram";
+    messageElement.textContent = "Please navigate to your Instagram profile page to use this extension";
     messageElement.className = "error";
 }
 
@@ -19,10 +19,6 @@ function correctURL() {
     // make fetch button visible
     const buttonContainer = document.getElementById('button');
     buttonContainer.style.display = 'block';
-
-    // update message
-    messageElement.textContent = "You're on Instagram";
-    messageElement.className = "success";
 }
 
 // Verify if user is opening extension on instagram page
@@ -53,7 +49,15 @@ document.getElementById("fetchData").addEventListener("click", async () => {
             files: ["scripts/content.js"]
         },
         () => {
-            document.getElementById("message").innerText = "Data fetched. Check console.";
+            // Ajouter un lien cliquable
+            const result = document.getElementById("message");
+            const link = document.createElement("a");
+            link.href = "https://julesr0y.xyz";
+            link.id = "resultLink";
+            link.textContent = "View Data";
+            link.target = "_blank";
+            result.innerText = "";
+            result.appendChild(link);
         }
     );
 });

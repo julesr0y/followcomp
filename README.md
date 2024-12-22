@@ -9,6 +9,7 @@ FollowComp is a [Chrome extension](https://chromewebstore.google.com/category/ex
 - popup :
 
   - `popup.html` : User interface to use the extension
+  - `popup.css` : Stylesheet for the popup
   - `popup.js` : Script to launch the main script
 
 - scripts :

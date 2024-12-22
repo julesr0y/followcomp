@@ -3,7 +3,7 @@
     "name": "FollowComp",
     "description": "Compare your following list to your followers list",
     "version": "0.1",
-    "permissions": ["scripting", "tabs"],
+    "permissions": ["scripting", "tabs", "activeTab"],
     "host_permissions": ["https://www.instagram.com/*"],
     "action": {
         "default_popup": "popup/popup.html"

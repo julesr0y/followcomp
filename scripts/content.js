@@ -6,7 +6,7 @@
     let iDontFollowBack = [];
 
     try {
-        console.log(`Process started for user: ${username}`);
+        // console.log(`Process started for user: ${username}`);
 
         const userQueryRes = await fetch(
             `https://www.instagram.com/web/search/topsearch/?query=${username}`
@@ -21,7 +21,7 @@
             return;
         }
 
-        console.log(`User ID: ${userId}`);
+        // console.log(`User ID: ${userId}`);
 
         let after = null;
         let has_next = true;
@@ -52,7 +52,7 @@
             );
         }
 
-        console.log({ followers });
+        // console.log({ followers });
 
         // Fetch followings
         after = null;
@@ -83,22 +83,22 @@
             );
         }
 
-        console.log({ followings });
+        // console.log({ followings });
 
         // Compare followers and followings
         dontFollowMeBack = followings.filter((following) => {
             return !followers.find((follower) => follower.username === following.username);
         });
 
-        console.log({ dontFollowMeBack });
+        // console.log({ dontFollowMeBack });
 
         iDontFollowBack = followers.filter((follower) => {
             return !followings.find((following) => following.username === follower.username);
         });
 
-        console.log({ iDontFollowBack });
+        // console.log({ iDontFollowBack });
 
-        console.log("Process complete. Check results in the console.");
+        // console.log("Process complete. Check results in the console.");
     } catch (err) {
         console.error("Error:", err);
     }
