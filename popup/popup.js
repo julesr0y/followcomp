@@ -1,3 +1,48 @@
+// elements
+const messageElement = document.getElementById("message");
+
+// functions
+// if URL could not be read
+function errorURL() {
+    messageElement.textContent = "Unable to get current tab URL";
+    messageElement.className = "error";
+}
+
+// if URL cannot be used by extension
+function incorrectURL() {
+    messageElement.textContent = "You're not on Instagram";
+    messageElement.className = "error";
+}
+
+// if URL is correct
+function correctURL() {
+    // make fetch button visible
+    const buttonContainer = document.getElementById('button');
+    buttonContainer.style.display = 'block';
+
+    // update message
+    messageElement.textContent = "You're on Instagram";
+    messageElement.className = "success";
+}
+
+// Verify if user is opening extension on instagram page
+document.addEventListener("DOMContentLoaded", () => {
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+        const currentTab = tabs[0];
+
+        if (currentTab && currentTab.url) {
+            if (currentTab.url.includes("instagram.com")) {
+                correctURL();
+            } else {
+                incorrectURL();
+            }
+        } else {
+            errorURL();
+        }
+    });
+});
+
+// Get data with content.js
 document.getElementById("fetchData").addEventListener("click", async () => {
     document.getElementById("message").innerText = "Processing...";
 
@@ -18,25 +63,3 @@ async function getActiveTab() {
     let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
     return tab;
 }
-
-// Verify if user is opening extension on instagram page
-document.addEventListener("DOMContentLoaded", () => {
-    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-        const currentTab = tabs[0];
-        const messageElement = document.getElementById("message");
-
-        if (currentTab && currentTab.url) {
-            // Vérifiez si l'URL appartient à Instagram
-            if (currentTab.url.includes("instagram.com")) {
-                messageElement.textContent = "You're on Instagram";
-                messageElement.className = "success";
-            } else {
-                messageElement.textContent = "You're not on Instagram";
-                messageElement.className = "error";
-            }
-        } else {
-            messageElement.textContent = "Unable to get current tab URL";
-            messageElement.className = "error";
-        }
-    });
-});
