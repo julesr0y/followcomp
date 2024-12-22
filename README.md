@@ -12,8 +12,13 @@ FollowComp is a [Chrome extension](https://chromewebstore.google.com/category/ex
   - `popup.js` : Script to launch the main script
 
 - scripts :
+
   - `content.js` : Main script, gets and compare the data
   - `background.js` : Not used actually, may be useful for future updates
+
+- images :
+
+  - contains icon for the extension (16x16, 32x32, 48x48, 128x128)
 
 ---
 
