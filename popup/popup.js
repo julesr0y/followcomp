@@ -54,7 +54,7 @@ document.getElementById("fetchData").addEventListener("click", async () => {
             const link = document.createElement("a");
             link.href = "https://julesr0y.xyz";
             link.id = "resultLink";
-            link.textContent = "View Data";
+            link.textContent = "Download Data";
             link.target = "_blank";
             result.innerText = "";
             result.appendChild(link);
