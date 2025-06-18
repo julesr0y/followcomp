@@ -15,7 +15,7 @@ FollowComp is a [Chrome extension](https://chromewebstore.google.com/category/ex
 - scripts :
 
   - `content.js` : Main script, gets and compare the data
-  - `background.js` : Not used actually, may be useful for future updates
+  - `background.js` : Background script, used to handle the extension's lifecycle
 
 - images :
 

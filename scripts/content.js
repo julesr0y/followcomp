@@ -44,6 +44,8 @@
                 json.data.user.edge_followed_by.edges.map(({ node }) => ({
                     username: node.username,
                     full_name: node.full_name,
+                    is_verified: node.is_verified,
+                    profile_pic_url: node.profile_pic_url
                 }))
             );
         }
@@ -73,6 +75,8 @@
                 json.data.user.edge_follow.edges.map(({ node }) => ({
                     username: node.username,
                     full_name: node.full_name,
+                    is_verified: node.is_verified,
+                    profile_pic_url: node.profile_pic_url
                 }))
             );
         }
@@ -83,6 +87,10 @@
         });
 
         console.log({ dontFollowMeBack });
+        chrome.runtime.sendMessage({
+            action: "setDontFollowMeBack",
+            data: dontFollowMeBack
+        }); // Save to storage (popup.js will handle this)
 
         iDontFollowBack = followers.filter((follower) => {
             return !followings.find((following) => following.username === follower.username);
@@ -92,4 +100,4 @@
     } catch (err) {
         console.error("Error:", err);
     }
-})();  
+})();
