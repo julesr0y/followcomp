@@ -1,9 +1,22 @@
+@font-face {
+    font-family: 'Coolvetica';
+    src: url('../fonts/Coolvetica.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'SuperCharge';
+    src: url('../fonts/SuperCharge.otf') format('opentype');
+}
+
+* {
+    font-family: 'Coolvetica', sans-serif;
+}
+
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
     padding: 10px;
-    width: 250px;
-    height: 150px;
+    width: 275px;
+    height: 200px;
     background-color: #2A2929;
     color: white;
     display: flex;
@@ -11,9 +24,18 @@ body {
     align-items: center;
 }
 
+h3 {
+    font-family: 'SuperCharge', sans-serif;
+    font-size: 24px;
+}
+
+#presentation {
+    font-size: 18px;
+}
+
 button {
     padding: 10px 20px;
-    font-size: 14px;
+    font-size: 16px;
     background-color: #E1306C;
     color: white;
     border: none;
@@ -25,17 +47,17 @@ button:hover {
     background-color: #C13584;
 }
 
-#resultLink {
-    padding: 10px 20px;
-    font-size: 14px;
-    background-color: #405DE6;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    text-decoration: none;
+#message {
+    padding-bottom: 25px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    font-size: 16px;
 }
 
-#resultLink:hover {
-    background-color: #5B51D8;
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+#loaderIcon {
+    animation: spin 1s linear infinite;
 }
