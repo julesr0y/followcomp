@@ -1,6 +1,6 @@
 # FollowComp
 
-FollowComp is a [Chrome extension](https://chromewebstore.google.com/category/extensions?hl=en) that can be used to view the users you follow that don't follow you back.
+FollowComp is a [Chrome extension](https://chromewebstore.google.com/detail/followcomp/dboemglicjcnfojjnijfaochbpopadjg?pli=1) that can be used to view the users you follow that don't follow you back.
 
 ## Documentation :
 
