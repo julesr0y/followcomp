@@ -21,6 +21,11 @@ function correctURL() {
     buttonContainer.style.display = 'block';
 }
 
+// generate random string (for cache busting)
+function randomString(length = 8) {
+    return Math.random().toString(36).substring(2, 2 + length);
+}
+
 // Verify if user is opening extension on instagram page
 document.addEventListener("DOMContentLoaded", () => {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
@@ -65,7 +70,9 @@ document.getElementById("fetchData").addEventListener("click", async () => {
 
                     // profile picture
                     const profilePic = document.createElement('img');
-                    const proxyURL = `https://images.weserv.nl/?url=${encodeURIComponent(user.profile_pic_url.replace(/^https?:\/\//, ''))}`;
+                    const proxyURL = `https://images.weserv.nl/?url=${
+                        encodeURIComponent(user.profile_pic_url.replace(/^https?:\/\//, ''))
+                    }&cb=${randomString()}`;
                     profilePic.src = proxyURL;
                     profilePic.alt = `${user.username}'s profile picture`;
                     profilePic.style.width = "32px";
